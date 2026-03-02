@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "743301996065",
+    "project_id": "braillerecognitionapp",
+    "storage_bucket": "braillerecognitionapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:743301996065:android:36abd735af7e1727b0cd60",
+        "android_client_info": {
+          "package_name": "uz.mq.braillerecognition"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "743301996065-qbl64eg3mpu28hnndnbvaa08gs1gek01.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uz.mq.braillerecognition",
+            "certificate_hash": "02427ec443845ce6d09dac3a037be1f005a035e3"
+          }
+        },
+        {
+          "client_id": "743301996065-8hmbhjif9gvvq8f0s3j6sceo1p44mpkj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmityjbViI6l1zhvS78LYgJjJzu60Pjy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "743301996065-8hmbhjif9gvvq8f0s3j6sceo1p44mpkj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "743301996065-8b07t1fc4p4vo3cd8160gmetk1i4jjj1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.braillerecognition"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

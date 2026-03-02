@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>743301996065-gtg71k9l0hr2us8v80skk50uiihvno71.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.743301996065-gtg71k9l0hr2us8v80skk50uiihvno71</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAnH3tJLT4cdOoyWBaYKhl3ieYCA7wJito</string>
+	<key>GCM_SENDER_ID</key>
+	<string>743301996065</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>uz.mq.braillerecognition</string>
+	<key>PROJECT_ID</key>
+	<string>braillerecognitionapp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>braillerecognitionapp.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:743301996065:ios:06e52c8075d374a0b0cd60</string>
+</dict>
+</plist>
