@@ -10,6 +10,9 @@ class ApiConstants {
   static const String me = '/auth/me';
   static const String logout = '/auth/logout';
 
+  // Language endpoints
+  static const String languages = '/languages';
+
   // Headers
   static const String authorizationHeader = 'Authorization';
   static const String contentTypeHeader = 'Content-Type';

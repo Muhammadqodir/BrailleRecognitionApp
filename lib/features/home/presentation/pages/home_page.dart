@@ -1,7 +1,13 @@
+import 'package:braillerecognition/core/dialogs/select_dialog.dart';
+import 'package:braillerecognition/features/home/domain/entities/language.dart';
+import 'package:braillerecognition/features/home/presentation/bloc/language_bloc.dart';
+import 'package:braillerecognition/features/home/presentation/bloc/language_event.dart';
+import 'package:braillerecognition/features/home/presentation/bloc/language_state.dart';
 import 'package:braillerecognition/features/home/presentation/widgets/home_appbar.dart';
 import 'package:braillerecognition/features/home/presentation/widgets/translate_options.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -32,6 +38,24 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
+  void _onLanguageTap(BuildContext context, List<Language> langs, Language? selected) async {
+    print("test");
+    final int initialIndex = selected != null
+        ? langs.indexWhere((l) => l.id == selected.id).clamp(0, langs.length - 1)
+        : 0;
+
+    final Language? result = await showSelectLangDialog<Language>(
+      langs: langs,
+      selectedIndex: initialIndex,
+      context: context,
+      labelBuilder: (lang) => lang.name,
+    );
+
+    if (result != null && context.mounted) {
+      context.read<LanguageBloc>().add(SelectLanguage(result.id));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,12 +75,20 @@ class _HomePageState extends State<HomePage> {
             SliverList(
               delegate: SliverChildListDelegate([
                 SizedBox(height: 8),
-                TranslateOptions(
-                  selectedLanguage: "English (GR1)",
-                  onLanguageTap: () {},
-                  onCameraTap: () {},
-                  onImportTap: () {},
-                  onKeyboardTap: () {},
+                BlocBuilder<LanguageBloc, LanguageState>(
+                  builder: (context, state) {
+                    final langs = state is LanguageLoaded ? state.languages : <Language>[];
+                    final selected = state is LanguageLoaded ? state.selectedLanguage : null;
+                    final label = selected?.name ?? 'Select Language';
+
+                    return TranslateOptions(
+                      selectedLanguage: label,
+                      onLanguageTap: () => _onLanguageTap(context, langs, selected),
+                      onCameraTap: () {},
+                      onImportTap: () {},
+                      onKeyboardTap: () {},
+                    );
+                  },
                 ),
                 const SizedBox(height: 8),
                 Padding(

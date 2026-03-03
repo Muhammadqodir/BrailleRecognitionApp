@@ -2,7 +2,8 @@ import 'package:braillerecognition/features/auth/presentation/bloc/auth_bloc.dar
 import 'package:braillerecognition/features/auth/presentation/bloc/auth_event.dart';
 import 'package:braillerecognition/features/auth/presentation/bloc/auth_state.dart';
 import 'package:braillerecognition/features/auth/presentation/login_page.dart';
-import 'package:braillerecognition/features/home/presentation/pages/home_page.dart';
+import 'package:braillerecognition/features/home/presentation/bloc/language_bloc.dart';
+import 'package:braillerecognition/features/home/presentation/bloc/language_event.dart';
 import 'package:braillerecognition/features/navigation/presentation/pages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,6 +20,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     context.read<AuthBloc>().add(const CheckAuthStatus());
+    context.read<LanguageBloc>().add(const LoadLanguages());
   }
 
   @override

@@ -16,6 +16,11 @@ import 'features/auth/domain/usecases/login_usecase.dart';
 import 'features/auth/domain/usecases/logout_usecase.dart';
 import 'features/auth/domain/usecases/register_usecase.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
+import 'features/home/data/datasources/language_remote_data_source.dart';
+import 'features/home/data/repositories/language_repository_impl.dart';
+import 'features/home/domain/repositories/language_repository.dart';
+import 'features/home/domain/usecases/get_languages_usecase.dart';
+import 'features/home/presentation/bloc/language_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -63,6 +68,25 @@ Future<void> init() async {
   // Services
   sl.registerLazySingleton(() => GoogleSignInService(sl()));
   sl.registerLazySingleton(() => AppleSignInService());
+
+  //! Features - Language
+  // Bloc
+  sl.registerFactory(
+    () => LanguageBloc(getLanguagesUseCase: sl()),
+  );
+
+  // Use cases
+  sl.registerLazySingleton(() => GetLanguagesUseCase(sl()));
+
+  // Repository
+  sl.registerLazySingleton<LanguageRepository>(
+    () => LanguageRepositoryImpl(remoteDataSource: sl()),
+  );
+
+  // Data sources
+  sl.registerLazySingleton<LanguageRemoteDataSource>(
+    () => LanguageRemoteDataSourceImpl(dioClient: sl()),
+  );
 
   //! Core
   sl.registerLazySingleton(() => DioClient(sl()));

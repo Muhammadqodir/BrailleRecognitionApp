@@ -44,9 +44,7 @@ class TranslateOptions extends StatelessWidget {
               color: const Color(0xFFA2E7FB),
             ),
             child: Tappable(
-              onTap: () {
-                // Show select language dialog
-              },
+              onTap: onLanguageTap,
               child: Row(
                 children: [
                   Expanded(
@@ -90,9 +88,7 @@ class TranslateOptions extends StatelessWidget {
               children: [
                 Expanded(
                   child: Tappable(
-                    onTap: () {
-                      // Run camera
-                    },
+                    onTap: onCameraTap,
                     child: Column(
                       children: [
                         HugeIcon(
@@ -111,9 +107,7 @@ class TranslateOptions extends StatelessWidget {
                 ),
                 Expanded(
                   child: Tappable(
-                    onTap: () {
-                      // Show import dialog
-                    },
+                    onTap: onImportTap,
                     child: Column(
                       children: [
                         HugeIcon(
@@ -132,9 +126,7 @@ class TranslateOptions extends StatelessWidget {
                 ),
                 Expanded(
                   child: Tappable(
-                    onTap: () {
-                      // Show keyboard
-                    },
+                    onTap: onKeyboardTap,
                     child: Column(
                       children: [
                         HugeIcon(

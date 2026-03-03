@@ -6,7 +6,6 @@ import 'package:braillerecognition/core/widgets/divider_text.dart';
 import 'package:braillerecognition/core/widgets/outline_button.dart';
 import 'package:braillerecognition/core/widgets/tappable.dart';
 import 'package:braillerecognition/features/auth/presentation/register_page.dart';
-import 'package:braillerecognition/features/home/presentation/pages/home_page.dart';
 import 'package:braillerecognition/features/navigation/presentation/pages/main_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -3,6 +3,7 @@ import 'package:braillerecognition/features/auth/presentation/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
+import 'features/home/presentation/bloc/language_bloc.dart';
 import 'injection_container.dart' as di;
 
 void main() async {
@@ -16,8 +17,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => di.sl<AuthBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => di.sl<AuthBloc>()),
+        BlocProvider(create: (context) => di.sl<LanguageBloc>()),
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
