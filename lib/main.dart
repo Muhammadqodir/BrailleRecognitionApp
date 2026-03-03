@@ -1,5 +1,5 @@
 import 'package:braillerecognition/core/utils/themes.dart';
-import 'package:braillerecognition/features/onboarding/presentation/pages/onboarding_page.dart';
+import 'package:braillerecognition/features/auth/presentation/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         theme: lightTheme,
         darkTheme: darkTheme,
         themeMode: ThemeMode.light,
-        home: const OnboardingPage(),
+        home: const SplashPage(),
       ),
     );
   }

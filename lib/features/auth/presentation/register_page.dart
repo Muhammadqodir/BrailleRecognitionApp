@@ -9,6 +9,7 @@ import 'package:braillerecognition/core/widgets/outline_button.dart';
 import 'package:braillerecognition/core/widgets/tappable.dart';
 import 'package:braillerecognition/features/auth/presentation/login_page.dart';
 import 'package:braillerecognition/features/home/presentation/pages/home_page.dart';
+import 'package:braillerecognition/features/navigation/presentation/pages/main_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,7 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
               // Navigate to home page
               Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
-                  builder: (context) => const HomePage(),
+                  builder: (context) => const MainPage(),
                 ),
                 (route) => false,
               );

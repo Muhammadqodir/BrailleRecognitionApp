@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/services/apple_signin_service.dart';
 import '../../data/services/google_signin_service.dart';
+import '../../domain/repositories/auth_repository.dart';
 import '../../domain/usecases/apple_signin_usecase.dart';
 import '../../domain/usecases/get_current_user_usecase.dart';
 import '../../domain/usecases/google_signin_usecase.dart';
@@ -20,6 +20,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final GetCurrentUserUseCase getCurrentUserUseCase;
   final GoogleSignInService googleSignInService;
   final AppleSignInService appleSignInService;
+  final AuthRepository authRepository;
 
   AuthBloc({
     required this.registerUseCase,
@@ -30,6 +31,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required this.getCurrentUserUseCase,
     required this.googleSignInService,
     required this.appleSignInService,
+    required this.authRepository,
   }) : super(const AuthInitial()) {
     on<RegisterRequested>(_onRegisterRequested);
     on<LoginRequested>(_onLoginRequested);
@@ -37,6 +39,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AppleSignInRequested>(_onAppleSignInRequested);
     on<LogoutRequested>(_onLogoutRequested);
     on<GetCurrentUserRequested>(_onGetCurrentUserRequested);
+    on<CheckAuthStatus>(_onCheckAuthStatus);
   }
 
   Future<void> _onRegisterRequested(
@@ -175,6 +178,27 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     final result = await getCurrentUserUseCase();
 
+    result.fold(
+      (failure) => emit(const AuthUnauthenticated()),
+      (user) => emit(AuthAuthenticated(user)),
+    );
+  }
+
+  Future<void> _onCheckAuthStatus(
+    CheckAuthStatus event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(const AuthLoading());
+
+    final isLoggedIn = await authRepository.isLoggedIn();
+
+    if (!isLoggedIn) {
+      emit(const AuthUnauthenticated());
+      return;
+    }
+
+    // Token exists — verify it is still valid by fetching current user
+    final result = await getCurrentUserUseCase();
     result.fold(
       (failure) => emit(const AuthUnauthenticated()),
       (user) => emit(AuthAuthenticated(user)),

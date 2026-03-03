@@ -32,6 +32,7 @@ Future<void> init() async {
       getCurrentUserUseCase: sl(),
       googleSignInService: sl(),
       appleSignInService: sl(),
+      authRepository: sl(),
     ),
   );
 
